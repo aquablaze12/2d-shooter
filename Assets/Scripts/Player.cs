@@ -13,12 +13,14 @@ public class Player : MonoBehaviour
     [SerializeField]
     private GameObject _lazerPrefab;
     private Vector3 _lazerOffset = new Vector3(0, 0.8f, 0);
+    [SerializeField]
+    private float _fireRate = 0.5f;
+    private float _canFire = -1f;
 
 
     // Start is called before the first frame update
     void Start()
     {
-        //take the curreent position = new position (0, 0, 0,)
         transform.position = new Vector3(0, 0, 0);
     }
 
@@ -27,12 +29,9 @@ public class Player : MonoBehaviour
     {
         CalculateMovement();
 
-        //if i hit space
-        //spawn lazer  or gameobject
-
-        if (Input.GetKeyDown(KeyCode.Space))
+        if (Input.GetKeyDown(KeyCode.Space) && Time.time > _canFire)
         {
-            Instantiate(_lazerPrefab, transform.position + _lazerOffset, Quaternion.identity);
+            FireLazer();
         }
     }
 
@@ -56,5 +55,11 @@ public class Player : MonoBehaviour
         {
             transform.position = new Vector3(11.3f, transform.position.y, 0);
         }
+    }
+
+    void FireLazer()
+    {
+            _canFire = Time.time + _fireRate;
+            Instantiate(_lazerPrefab, transform.position + _lazerOffset, Quaternion.identity);
     }
 }
