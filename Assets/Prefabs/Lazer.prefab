@@ -120,4 +120,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5bbd20c61f61a3d47b04db87e8dba66d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _speed: 8
+  _speed: 16
+  _lazerprefab: {fileID: 0}
