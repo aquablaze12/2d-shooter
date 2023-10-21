@@ -232,7 +232,7 @@ GameObject:
   - component: {fileID: 704650300}
   m_Layer: 0
   m_Name: Player
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -478,6 +478,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Enemy
       objectReference: {fileID: 0}
+    - target: {fileID: 1956507919808562373, guid: 385b14c5909f7b64a9434aaea6835c18, type: 3}
+      propertyPath: m_TagString
+      value: Enemy
+      objectReference: {fileID: 0}
     - target: {fileID: 3985646486065530621, guid: 385b14c5909f7b64a9434aaea6835c18, type: 3}
       propertyPath: m_IsTrigger
       value: 0
@@ -576,6 +580,10 @@ PrefabInstance:
       objectReference: {fileID: 2629649454069025394, guid: a8f27a2a8461674498814323c6265dc6, type: 3}
     - target: {fileID: 2629649454069025394, guid: a8f27a2a8461674498814323c6265dc6, type: 3}
       propertyPath: m_Name
+      value: Lazer
+      objectReference: {fileID: 0}
+    - target: {fileID: 2629649454069025394, guid: a8f27a2a8461674498814323c6265dc6, type: 3}
+      propertyPath: m_TagString
       value: Lazer
       objectReference: {fileID: 0}
     - target: {fileID: 5333554883035746793, guid: a8f27a2a8461674498814323c6265dc6, type: 3}
