@@ -119,7 +119,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5b937a08fb900b3409c37e8ad8dba5f2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _speed: 4
+  _speed: 3
   _enemyPrefab: {fileID: 1956507919808562373}
 --- !u!54 &3709544301283528542
 Rigidbody:

@@ -6,7 +6,7 @@ public class Lazer : MonoBehaviour
 {
     // Start is called before the first frame update
     [SerializeField]
-    private int _speed = 8; 
+    private float _speed = 8.0f; 
 
     // Update is called once per frame
     void Update()
@@ -17,7 +17,6 @@ public class Lazer : MonoBehaviour
         {
             Destroy(this.gameObject);
         }
-
     }
 }
 
