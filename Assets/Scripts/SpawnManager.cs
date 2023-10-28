@@ -4,13 +4,14 @@ using UnityEngine;
 
 public class SpawnManager : MonoBehaviour
 {
-    private bool isGameActive = true;
     [SerializeField]
-    private GameObject _enemyprefab;
+    private GameObject _enemyPrefab;
+    [SerializeField]
+    private GameObject _enemyContainer;
     [SerializeField]
     private float _spawnRate = 5.0f;
-    private float _xSpawnRange = 8.5f;
-    private float _ySpawn = 8f;
+
+    private bool _stopSpawning = false;
     // Start is called before the first frame update
     void Start()
     {
@@ -25,10 +26,19 @@ public class SpawnManager : MonoBehaviour
 
     IEnumerator SpawnRoutine()
     {
-        while (isGameActive)
+        while (_stopSpawning == false)
         {
+            Vector3 posToSpawn = new Vector3(Random.Range(-8f, 8f), 7, 0);
+
+            GameObject newEnemy = Instantiate(_enemyPrefab, posToSpawn, Quaternion.identity);
+            newEnemy.transform.parent = _enemyContainer.transform;
+
             yield return new WaitForSeconds(_spawnRate);
-            Instantiate(_enemyprefab, new Vector3(Random.Range(-_xSpawnRange, _xSpawnRange), _ySpawn, 0), Quaternion.identity);
         }
+    }
+
+    public void OnPlayerDeath()
+    {
+        _stopSpawning = true;
     }
 }
