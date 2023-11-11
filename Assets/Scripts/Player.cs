@@ -12,13 +12,21 @@ public class Player : MonoBehaviour
     private float _speed = 4.5f;
     [SerializeField]
     private GameObject _lazerPrefab;
-    private Vector3 _lazerOffset = new Vector3(0, 1.05f, 0);
+    [SerializeField]
+    private GameObject _tripleshotprefab;
     [SerializeField]
     private float _fireRate = 0.5f;
     private float _canFire = -1f;
+    private Vector3 _lazerOffset = new Vector3(0, 1.05f, 0);
     [SerializeField]
     private int _lives = 3;
     private SpawnManager _spawnManager;
+    [SerializeField]
+    private bool _isTripleShotActive = false;
+
+
+
+   //variable for isTripleShotActive
 
 
     // Start is called before the first frame update
@@ -69,7 +77,24 @@ public class Player : MonoBehaviour
     void FireLazer()
     {
             _canFire = Time.time + _fireRate;
+
+        if (_isTripleShotActive == true)
+        {
+            Instantiate(_tripleshotprefab, transform.position + _lazerOffset, Quaternion.identity);
+
+        }
+        else if (_isTripleShotActive == false)
+        {
             Instantiate(_lazerPrefab, transform.position + _lazerOffset, Quaternion.identity);
+        }
+        
+        //if space pressed
+        //if tripple shot active is true
+            //fire 3 lasers
+
+        //else if, fire 1 laser
+
+        //instantiate 3 lasers (triple shot)
     }
 
     public void Damage()
@@ -82,4 +107,26 @@ public class Player : MonoBehaviour
             Destroy(this.gameObject);
         }
     }
+
+    public void TripleShotActive()
+    {
+        _isTripleShotActive = true;
+         StartCoroutine("TripleShotDown");
+       
+        //triple shot active becomes true
+        //start the power down coroutine for triple shot
+    }
+
+    IEnumerator TripleShotDown()
+    {
+        while(_isTripleShotActive == true)
+        {
+            yield return new WaitForSeconds(5);
+            _isTripleShotActive = false;
+        }
+
+    }
+    //ieneuemrator triple hot down routine
+    //wait 5 sec
+    //set the triple shot to false
 }
